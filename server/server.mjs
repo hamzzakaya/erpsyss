@@ -1,14 +1,18 @@
 import express from 'express'
 import axios from 'axios'
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT
+app.use(cors())
 app.use(express.json());
 app.use(express.text())
 
-app.listen(PORT)
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+})
 
 const dbInfo = {
     "collection": process.env.COLLECTIONS,
